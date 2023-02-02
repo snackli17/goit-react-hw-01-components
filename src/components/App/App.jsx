@@ -1,4 +1,5 @@
 import { Profile } from  'components/Profile/Profile'
+import user from "../Profile/user.json";
 
 
 
@@ -21,6 +22,11 @@ import { Profile } from  'components/Profile/Profile'
 
 export const App = () => {
   return (
-      <Profile  />
+    <Profile
+      tag={user.tag}
+      location={user.location}
+      avatar={user.avatar}
+      stats={user.stats}
+    />
   );
 };
