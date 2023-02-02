@@ -1,39 +1,38 @@
 import PropTypes from 'prop-types';
-import css from './Profile.module.css';
-import user from '../Profile/user.json';
-
-
+// import css from './Profile.module.css';
+import {Container, Description, Name, Stats,StatsList, Label, Quantity } from './Profile.styled';import user from '../Profile/user.json';
 
 export const Profile = ({ username, tag, location, avatar, stats }) => {
   return (
-    <div className={css.profile}>
-      <div className={css.description}>
+    <Container>
+      <Description>
         <img
           src="http://hypeava.ru/uploads/posts/2018-05/1527186603_7.png"
           alt="User avatar"
         />
-        <p className={css.name}>{user.username}</p>
-        <p className={css.tag}>@{tag}</p>
-        <p className={css.location}>{location}</p>
-      </div>
+        <Name>{user.username}</Name>
+        <p>@{tag}</p>
+        <p>{location}</p>
+      </Description>
 
-      <ul className={css.stats}>
-        <li className={css.statsList}>
-          <span className={css.label}>Followers</span>
-          <span className={css.quantity}>{stats.followers}</span>
-        </li>
-        <li className={css.statsList}>
-          <span className={css.label}>Views</span>
-          <span className={css.quantity}>{stats.views}</span>
-        </li>
-        <li className={css.statsList}>
-          <span className={css.label}>Likes</span>
-          <span className={css.quantity}>{stats.likes}</span>
-        </li>
-      </ul>
-    </div>
+      <Stats>
+        <StatsList>
+          <Label>Followers</Label>
+          <Quantity>{stats.followers}</Quantity>
+        </StatsList>
+        <StatsList>
+          <Label>Views</Label>
+          <Quantity>{stats.views}</Quantity>
+        </StatsList>
+        <StatsList>
+          <Label>Likes</Label>
+          <Quantity>{stats.likes}</Quantity>
+        </StatsList>
+      </Stats>
+    </Container>
   );
 };
+
 
 Profile.propTypes = {
   username: PropTypes.string.isRequired,
