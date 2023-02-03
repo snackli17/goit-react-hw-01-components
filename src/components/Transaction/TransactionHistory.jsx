@@ -1,48 +1,44 @@
+import PropTypes from 'prop-types';
+import css from "./Transactions.module.css";
 
 
 
 
-
-// export const TransactionList = ({ transactions }) => (
-//     {transactions.map(transaction => (
-//       <TransactionsHistory
-//         currency={transaction.currency}
-//         type={transaction.type}
-//         key={transaction.id}
-//         amount={transaction.amount}
-//       ></TransactionsHistory>
-//     ))}
-// );
-
-
-export const TransactionsHistory = ({type, amount, currency }) => {
+export const TransactionsHistory = ({items  }) => {
   return (
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Amount</th>
-      <th>Currency</th>
+<table table className={css.transactions}>
+  <thead className={css.headTable}>
+    <tr className={css.valueTable}>
+      <th className={css.nameRow}>Type</th>
+      <th className={css.nameRow}>Amount</th>
+      <th className={css.nameRow}>Currency</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr>
-      <td>Invoice</td>
-      <td>125</td>
-      <td>USD</td>
-    </tr>
-    <tr>
-      <td>Withdrawal</td>
-      <td>85</td>
-      <td>USD</td>
-    </tr>
+   {items.map(item => (
+        <tr key={item.id} className={css.valueTable}>
+          <td className={css.value}>{item.type}</td>
+          <td className={css.value}>{item.amount}</td>
+          <td className={css.value}>{item.currency}</td>
+        </tr>
+      ))}
   </tbody>
 </table>
 
   )
 }
 
+TransactionsHistory.propTypes = {
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            type: PropTypes.string.isRequired,
+            amount: PropTypes.string.isRequired,
+            currency: PropTypes.string.isRequired,
+        })
+    )
+};
 
 
 

@@ -42,7 +42,7 @@ export const App = () => {
     />
       <Statistics title="UPLOAD STATS" stats={data} />
       <FriendList friends={friends} />;
-      <TransactionsHistory transactions={transactions} />;
+      <TransactionsHistory items={transactions} />;
     </>
   );
   
